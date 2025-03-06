@@ -4,15 +4,15 @@ language: shell
 #   - "3.9"
 #   - "3.10"
 install:
-  - pip3 install -r requirements.txt
+  - pip3 install -r djangotutorial/requirements.txt
 before_script:
-  - python3 manage.py migrate
-  - python3 manage.py collectstatic --noinput
+  - python3 djangotutorial/manage.py migrate
+  - python3 djangotutorial/manage.py collectstatic --noinput
 # only_create_app_version: "true"
 script:
   - black --check .
   - flake8 .
-  - coverage run --source=mysite_swe1_app,polls manage.py test
+  - coverage run --source=mysite_swe1_app,polls djangotutorial/manage.py djangotutorial/test
 after_script:
   - coveralls
 # before_deploy: "echo 'ready?'"
