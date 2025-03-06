@@ -11,7 +11,7 @@ before_script:
 script:
   - black --check .
   - flake8 .
-  - coverage run --source=mysite_swe1_app,polls djangotutorial/manage.py djangotutorial/test
+  - coverage run --source=mysite_swe1_app,polls djangotutorial/manage.py test
 after_script:
   - coveralls
 before_deploy: "echo 'ready?'"
