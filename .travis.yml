@@ -3,7 +3,8 @@ python:
   - "3.8"
   - "3.9"
   - "3.10"
-  - "3.13"
+  - "3.12"
+dist: focal
 install:
   - python3 -m pip install -r djangotutorial/requirements.txt
 before_script:
