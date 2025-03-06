@@ -1,8 +1,8 @@
-language: shell
-# python:
-#   - "3.8"
-#   - "3.9"
-#   - "3.10"
+language: python
+python:
+  - "3.8"
+  - "3.9"
+  - "3.10"
 install:
   - pip3 install -r djangotutorial/requirements.txt
 before_script:
