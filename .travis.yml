@@ -14,17 +14,5 @@ script:
   - coverage run --source=mysite_swe1_app,polls djangotutorial/manage.py test
 after_script:
   - coveralls
-before_deploy: "echo 'ready?'"
-deploy:
-  provider: elasticbeanstalk
-  access_key_id:
-    secure: $AWS_ACCESS_KEY_ID
-  secret_access_key:
-    secure: $AWS_SECRET_ACCESS_KEY
-  region: "us-east-1"
-  app: "djangoTutorial"
-  env: "django-env"
-  bucket: "elasticbeanstalk-us-east-1-982534395285"
-  on:
-    branch: main
-after_deploy: "echo 'DONE'"
+  - cd djangotutorial
+  - eb deploy
