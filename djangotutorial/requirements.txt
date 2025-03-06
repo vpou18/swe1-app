@@ -3,3 +3,5 @@ pytz==2025.1
 sqlparse==0.5.3
 setuptools
 legacy-cgi
+black
+flake8
