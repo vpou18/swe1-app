@@ -1,15 +1,12 @@
 language: python
 python:
-  - "3.8"
-  - "3.9"
-  - "3.10"
   - "3.12"
 dist: focal
 install:
   - python3 -m pip install -r djangotutorial/requirements.txt
 before_script:
   - python3 djangotutorial/manage.py migrate
-  - python3 djangotutorial/manage.py collectstatic --noinput
+  # - python3 djangotutorial/manage.py collectstatic --noinput
 # only_create_app_version: "true"
 script:
   - black --check .
@@ -25,7 +22,7 @@ deploy:
   secret_access_key:
     secure: "AWS_SECRET_ACCESS_KEY"
   region: "us-east-1"
-  app: "travisT"
-  env: "travisT-env"
+  app: "djangotutorial"
+  env: "django-env"
   bucket_name: ""
 after_deploy: "echo 'DONE'"
