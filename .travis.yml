@@ -24,6 +24,7 @@ deploy:
   region: "us-east-1"
   app: "djangotutorial"
   env: "django-env"
+  bucket: ""
   on:
     branch: main
 after_deploy: "echo 'DONE'"
