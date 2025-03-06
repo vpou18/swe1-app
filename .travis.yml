@@ -22,7 +22,7 @@ deploy:
   secret_access_key:
     secure: "AWS_SECRET_ACCESS_KEY"
   region: "us-east-1"
-  app: "djangotutorial"
+  app: "djangoTutorial"
   env: "django-env"
   bucket: ""
   on:
