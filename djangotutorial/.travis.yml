@@ -5,18 +5,25 @@ python:
   - "3.10"
 install:
   - pip install -r requirements.txt
-script:
-  - pytest
+before_script:
+  - python manage.py migrate
+  - python manage.py collectstatic --noinput
 # only_create_app_version: "true"
-before_deploy: "echo 'ready?'"
-deploy:
-  provider: elasticbeanstalk
-  access_key_id:
-    secure: "AWS_ACCESS_KEY_ID"
-  secret_access_key:
-    secure: "AWS_SECRET_ACCESS_KEY"
-  region: "us-east-1"
-  app: "travisT"
-  env: "travisT-env"
-  bucket_name: ""
-after_deploy: "echo 'DONE'"
+script:
+  - black --check .
+  - flake8 .
+  - coverage run --source=mysite_swe1_app,polls manage.py test
+after_script:
+  - coveralls
+# before_deploy: "echo 'ready?'"
+# deploy:
+#   provider: elasticbeanstalk
+#   access_key_id:
+#     secure: "AWS_ACCESS_KEY_ID"
+#   secret_access_key:
+#     secure: "AWS_SECRET_ACCESS_KEY"
+#   region: "us-east-1"
+#   app: "travisT"
+#   env: "travisT-env"
+#   bucket_name: ""
+# after_deploy: "echo 'DONE'"
